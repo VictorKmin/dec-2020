@@ -258,6 +258,18 @@ db.getCollection('teacher').aggregate([
    }
 ])
 
+db.getCollection('teacher').aggregate([
+    {
+        $group: {
+             _id: 0,
+             maxPay:   { $max: "$payment" },
+             minPay:   { $min: "$payment" },
+             avgPay:   { $avg: "$payment" },
+             sumOfPay: { $sum: "$payment" }
+        }
+    }
+])
+
 
 db.getCollection('teacher').aggregate([
     {
